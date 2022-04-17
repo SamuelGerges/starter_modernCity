@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "intervention/image": "^2.7",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0"
     },
@@ -38,6 +39,10 @@
         },
         "classmap": [
             "database/seeds",
+            "database/factories"
+        ],
+        "helpers": [
+            "app/Helpers/upload_helper.php",
             "database/factories"
         ]
     },

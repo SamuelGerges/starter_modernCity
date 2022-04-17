@@ -42,9 +42,18 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
             'hash' => false,
+        ],
+        'api_user' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+
+        'api_crafts' => [
+            'driver' => 'jwt',
+            'provider' => 'crafts',
         ],
     ],
 
@@ -68,10 +77,19 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
+        ],
+        'crafts' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Craftsman::class,
         ],
 
-        // 'users' => [
+
+
+
+
+
+            // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],

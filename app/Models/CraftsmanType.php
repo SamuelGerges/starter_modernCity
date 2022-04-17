@@ -2,10 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class CraftsmanType extends Model
-{
     protected $primaryKey = 'craftsman_type_id';
     protected $table = 'craftsmen_types';
     protected $guarded = ['craftsman_type_id'];
@@ -13,10 +9,6 @@ class CraftsmanType extends Model
         'craftsman_type_name', 'craftsman_type_img',
     ];
 
-    protected $hidden = [
-    ];
-
-    public $timestamps = false;
 
 
     protected static function validation($craftsman_id = null){

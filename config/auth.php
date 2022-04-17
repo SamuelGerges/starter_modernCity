@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
 
         'api' => [
             'driver' => 'jwt',
@@ -84,12 +88,6 @@ return [
             'model' => App\Models\Craftsman::class,
         ],
 
-
-
-
-
-
-            // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
@@ -116,6 +114,11 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'expire' => 3600,
         ],
     ],
 

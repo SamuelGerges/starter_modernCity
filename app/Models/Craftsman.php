@@ -1,15 +1,6 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\DB;
-use Dotenv\Validator;
-use Illuminate\Validation\Rule;
-use Tymon\JWTAuth\Contracts\JWTSubject;
-
-class Craftsman extends Authenticatable  implements JWTSubject
 {
     protected $primaryKey = 'craftsman_id';
     protected $table = 'craftsmen';
@@ -69,22 +60,6 @@ class Craftsman extends Authenticatable  implements JWTSubject
 
 
         return[
-
-
-            'data.first_name'        => ['required', 'string', 'max:30'],
-            'data.last_name'         => ['required', 'string', 'max:30'],
-            'data.email'             => ['required', 'string', 'email', 'max:100', $email_rule],
-            'data.gender'            => ['required', 'in:male,female'],
-            'data.password'          => $password_rule,
-            'data.confirm_password'  => $confirm_password_rule,
-            'data.address'           => ['required', 'string', 'max:150'],
-            'data.phone'             => ['required', 'min:11', 'numeric', $phone_rule],
-            'data.work_state'        => ['required', 'integer', 'between:0,1'],
-            'data.craftsman_type_id' => ['required', 'exists:craftsmen_types,craftsman_type_id'],
-            'data.city_id'           => ['required', 'exists:cities,city_id'],
-            'data.description'       => ['string'],
-            'data.craftsman_img.url' => ['image', 'mimes:jpg,jpeg,png'],
-            'data.craftsman_img.alt' => ['string'],
         ];
 
 
@@ -92,14 +67,3 @@ class Craftsman extends Authenticatable  implements JWTSubject
 
 
 
-
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
-}

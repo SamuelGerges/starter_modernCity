@@ -2,26 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
-
-class User extends Authenticatable  implements JWTSubject
-{
-    protected $table = 'users';
-    protected $guarded = ['user_id','user_group_id','city_id'];
-    protected $fillable = [
-        'first_name', 'last_name', 'password', 'phone', 'address','user_group_id', 'city_id','email', 'gender', 'user_img'
-    ];
-    protected $hidden = ['created_at','updated_at','password'];
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
 
     public function show_user_type($email)
     {
@@ -56,20 +36,8 @@ class User extends Authenticatable  implements JWTSubject
         }
 
         return[
-            'data.first_name'      => ['required', 'string', 'max:30'],
-            'data.last_name'       => ['required', 'string', 'max:30'],
-            'data.user_group_id'   => ['required', 'exists:users_groups,user_group_id'],
-            'data.gender'          => ['required', 'in:male,female'],
-            'data.email'           => ['required', 'string', 'email', 'max:100', $email_rule],
-            'data.phone'           => ['required', 'min:11', 'numeric', $phone_rule],
-            'data.city_id'         => ['required', 'exists:cities,city_id'],
-            'data.address'         => ['required', 'string', 'max:150'],
-            'data.user_img.url'    => ['image', 'mimes:jpg,jpeg,png'],
-            'data.user_img.alt'    => ['string'],
-            'data.password'        =>  $password_rule,
-            'data.confirm_password'=> $confirm_password_rule,
         ];
 
 
     }
-}
+in

@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Africa/Cairo',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,9 @@ return [
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
 
+        /**********************************  by boiar ***************************************/
+        Intervention\Image\ImageServiceProvider::class
+
     ],
 
     /*
@@ -230,6 +233,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+
+        /**********************************  by boiar ***************************************/
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

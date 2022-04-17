@@ -1,13 +1,6 @@
 <?php
 
 namespace App\Models;
-
-use Dotenv\Validator;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
-
-class Craftsman extends Model
 {
     protected $primaryKey = 'craftsman_id';
     protected $table = 'craftsmen';
@@ -67,32 +60,10 @@ class Craftsman extends Model
 
 
         return[
-
-
-
-
-
-           'data.first_name'        => ['required', 'string', 'max:30'],
-           'data.last_name'         => ['required', 'string', 'max:30'],
-           'data.email'             => ['required', 'string', 'email', 'max:100', $email_rule],
-           'data.gender'            => ['required', 'in:male,female'],
-           'data.password'          => $password_rule,
-           'data.confirm_password'  => $confirm_password_rule,
-           'data.address'           => ['required', 'string', 'max:150'],
-           'data.phone'             => ['required', 'min:11', 'numeric', $phone_rule],
-           'data.work_state'        => ['required', 'integer', 'between:0,1'],
-           'data.craftsman_type_id' => ['required', 'exists:craftsmen_types,craftsman_type_id'],
-           'data.city_id'           => ['required', 'exists:cities,city_id'],
-           'data.description'       => ['string'],
-           'data.craftsman_img.url' => ['image', 'mimes:jpg,jpeg,png'],
-           'data.craftsman_img.alt' => ['string'],
         ];
 
 
     }
 
 
-
-
-}
 

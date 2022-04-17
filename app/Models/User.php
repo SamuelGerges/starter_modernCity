@@ -2,48 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
-
-class User extends Authenticatable
-{
-    use Notifiable;
-    protected $primaryKey = 'user_id';
-    protected $table = 'users';
-    protected $guarded = ['user_id', 'user_group_id', 'city_id'];
-    protected $fillable = [
-        'first_name', 'last_name', 'password', 'phone', 'address','user_group_id', 'city_id','email', 'gender', 'user_img'
-    ];
-
-
-    protected $hidden = [
-        'password',
-    ];
-
-
-    public function show_user_city($city_id)
-    {
-
-        $city = DB::table('cities')
-            ->where('city_id', $city_id)
-            ->value('city_name');
-        return $city;
-    }
-
-
-    public function show_user_group($group_id)
-    {
-
-        $group = DB::table('users_groups')
-            ->where('user_group_id', $group_id)
-            ->value('user_group_name');
-        return $group;
-    }
-
-
 
     public function show_user_type($email)
     {
@@ -78,23 +36,8 @@ class User extends Authenticatable
         }
 
         return[
-           'data.first_name'      => ['required', 'string', 'max:30'],
-           'data.last_name'       => ['required', 'string', 'max:30'],
-           'data.user_group_id'   => ['required', 'exists:users_groups,user_group_id'],
-           'data.gender'          => ['required', 'in:male,female'],
-           'data.email'           => ['required', 'string', 'email', 'max:100', $email_rule],
-           'data.phone'           => ['required', 'min:11', 'numeric', $phone_rule],
-           'data.city_id'         => ['required', 'exists:cities,city_id'],
-           'data.address'         => ['required', 'string', 'max:150'],
-           'data.user_img.url'    => ['image', 'mimes:jpg,jpeg,png'],
-           'data.user_img.alt'    => ['string'],
-           'data.password'        =>  $password_rule,
-           'data.confirm_password'=> $confirm_password_rule,
         ];
 
 
     }
-
-
-}
-
+in

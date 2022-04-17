@@ -2,13 +2,6 @@
 
 namespace App\Models;
 
-use Dotenv\Validator;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Validation\Rule;
-
-class CraftsmanType extends Model
-{
-
     protected $primaryKey = 'craftsman_type_id';
     protected $table = 'craftsmen_types';
     protected $guarded = ['craftsman_type_id'];
@@ -16,11 +9,6 @@ class CraftsmanType extends Model
         'craftsman_type_name', 'craftsman_type_img',
     ];
 
-
-
-
-    protected $hidden = [
-    ];
 
 
     protected static function validation($craftsman_id = null){
@@ -39,6 +27,5 @@ class CraftsmanType extends Model
             'data.craftsman_type_img.url' => ['image', 'mimes:jpg,jpeg,png'],
         ];
     }
-
 
 }
